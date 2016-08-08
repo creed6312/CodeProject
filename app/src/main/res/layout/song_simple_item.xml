@@ -4,20 +4,30 @@
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/card_padding">
 
-    <ImageView
-        android:id="@+id/iv_album_art"
-        android:src="@drawable/no_art"
-        android:layout_width="50dp"
-        android:layout_height="50dp" />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/iv_album_art"
+        android:src="@drawable/no_art"
+        android:layout_width="70dp"
+        android:layout_height="70dp" />
+
         <TextView
+            android:layout_toEndOf="@id/iv_album_art"
             android:id="@+id/tv_song_name"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:padding="@dimen/text_view_padding"/>
+
+        <TextView
+            android:layout_toEndOf="@id/iv_album_art"
+            android:layout_below="@id/tv_song_name"
+            android:id="@+id/tv_song_artist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/text_view_padding"/>
 
     </RelativeLayout>
 

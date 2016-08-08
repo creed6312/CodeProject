@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.shanesardinha.codeproject.Models.Song;
 import com.example.shanesardinha.codeproject.R;
 
@@ -33,8 +34,11 @@ public class SongListAdapter extends RecyclerView.Adapter<SongListAdapter.ViewHo
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         Song song = songs.get(position);
 
+        Glide.with(holder.mView.getContext()).load(song.getAlbumArt()).centerCrop()
+                .placeholder(R.drawable.no_art).crossFade().into(holder.mAlbumArt);
 
-
+        holder.mSongName.setText("Song: " + song.getName());
+        holder.mSongArtist.setText("Artist: " + song.getArtist());
     }
 
     @Override
@@ -46,12 +50,14 @@ public class SongListAdapter extends RecyclerView.Adapter<SongListAdapter.ViewHo
         public final View mView;
         public final ImageView mAlbumArt ;
         public final TextView mSongName ;
+        public final TextView mSongArtist;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
             mAlbumArt = (ImageView) view.findViewById(R.id.iv_album_art);
             mSongName = (TextView) view.findViewById(R.id.tv_song_name);
+            mSongArtist = (TextView) view.findViewById(R.id.tv_song_artist);
             mView.setOnClickListener(this);
         }
 

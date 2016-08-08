@@ -8,6 +8,15 @@ public class Song {
     private String name;
     private String album;
     private String artist;
+    private String albumArt;
+
+    public String getAlbumArt() {
+        return albumArt;
+    }
+
+    public void setAlbumArt(String albumArt) {
+        this.albumArt = albumArt;
+    }
 
     public String getArtist() {
         return artist;

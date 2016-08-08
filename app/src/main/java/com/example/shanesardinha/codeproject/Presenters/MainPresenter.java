@@ -10,6 +10,7 @@ public class MainPresenter implements IMainPresenter {
 
     private MainView mainView;
 
+
     public MainPresenter(MainView mainView) {
         this.mainView = mainView;
     }
