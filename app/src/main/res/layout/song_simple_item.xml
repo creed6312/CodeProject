@@ -8,27 +8,48 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/iv_album_art"
-        android:src="@drawable/no_art"
-        android:layout_width="70dp"
-        android:layout_height="70dp" />
+        <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/iv_album_art"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:padding="@dimen/inner_item_padding"
+            android:src="@drawable/no_art" />
 
-        <TextView
-            android:layout_toEndOf="@id/iv_album_art"
-            android:id="@+id/tv_song_name"
+        <LinearLayout
+            android:layout_centerVertical="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/text_view_padding"/>
-
-        <TextView
             android:layout_toEndOf="@id/iv_album_art"
-            android:layout_below="@id/tv_song_name"
-            android:id="@+id/tv_song_artist"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/text_view_padding"/>
+            android:orientation="vertical"
+            android:layout_marginStart="4dp"
+            android:padding="@dimen/inner_item_padding">
 
+            <TextView
+                android:id="@+id/tv_song_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/song_text_size"
+                android:maxHeight="30dp"/>
+
+            <TextView
+                android:id="@+id/tv_song_artist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/song_text_size" />
+
+            <TextView
+                android:id="@+id/tv_song_listeners"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/song_text_size" />
+
+            <TextView
+                android:id="@+id/tv_song_play_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/song_text_size" />
+        </LinearLayout>
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>

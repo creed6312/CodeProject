@@ -9,6 +9,24 @@ public class Song {
     private String album;
     private String artist;
     private String albumArt;
+    private int playCount;
+    private int listeners;
+
+    public int getPlayCount() {
+        return playCount;
+    }
+
+    public void setPlayCount(int playCount) {
+        this.playCount = playCount;
+    }
+
+    public int getListeners() {
+        return listeners;
+    }
+
+    public void setListeners(int listeners) {
+        this.listeners = listeners;
+    }
 
     public String getAlbumArt() {
         return albumArt;

@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">Top 20 S</string>
+    <string name="app_name">Top 50 Songs</string>
     <string name="api_get_top_tracks">http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks</string>
     <string name="api_key">&amp;api_key=</string>
     <string name="api_format">&amp;format=json</string>
+    <string name="fetching_song_list">Fetching Song list..</string>
 </resources>

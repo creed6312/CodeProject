@@ -11,4 +11,8 @@ public interface IMainPresenter {
     void onDestroy();
 
     void hideProgress();
+
+    void showProgress();
+
+    void fetchSongList();
 }
