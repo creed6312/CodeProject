@@ -3,6 +3,10 @@
     <dimen name="activity_horizontal_margin">8dp</dimen>
     <dimen name="activity_vertical_margin">8dp</dimen>
     <dimen name="card_padding">5dp</dimen>
+    <dimen name="song_detail_text">8dp</dimen>
+    <dimen name="divider_margin">6dp</dimen>
     <dimen name="inner_item_padding">2dp</dimen>
     <dimen name="song_text_size">12sp</dimen>
+    <dimen name="detail_image_size">130dp</dimen>
+    <dimen name="detail_footer_space">15dp</dimen>
 </resources>

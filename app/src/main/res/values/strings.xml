@@ -1,7 +1,17 @@
 <resources>
     <string name="app_name">Top 50 Songs</string>
     <string name="api_get_top_tracks">http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks</string>
+    <string name="api_get_track">http://ws.audioscrobbler.com/2.0/?method=track.getInfo</string>
+    <string name="api_get_artist">http://ws.audioscrobbler.com/2.0/?method=artist.getinfo</string>
     <string name="api_key">&amp;api_key=</string>
     <string name="api_format">&amp;format=json</string>
-    <string name="fetching_song_list">Fetching Song list..</string>
+    <string name="api_artist">&amp;artist=</string>
+    <string name="api_track">&amp;track=</string>
+    <string name="fetching_song_list">Fetching Song list...</string>
+    <string name="fetching_detail_song">Fetching Song details...</string>
+    <string name="fetching_detail_artist">Fetching Artist details...</string>
+    <string name="song_details">Song Details:</string>
+    <string name="song_wiki">Wiki:</string>
+    <string name="song_similar">Similar:</string>
+    <string name="no_wiki_details">No Wiki Details.</string>
 </resources>

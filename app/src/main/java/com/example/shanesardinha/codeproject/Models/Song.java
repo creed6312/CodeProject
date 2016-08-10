@@ -6,18 +6,17 @@ package com.example.shanesardinha.codeproject.Models;
 public class Song {
 
     private String name;
-    private String album;
-    private String artist;
-    private String albumArt;
-    private int playCount;
+    private Artist artist;
+    private int playcount;
     private int listeners;
+    private Image[] image;
 
     public int getPlayCount() {
-        return playCount;
+        return playcount;
     }
 
     public void setPlayCount(int playCount) {
-        this.playCount = playCount;
+        this.playcount = playCount;
     }
 
     public int getListeners() {
@@ -28,30 +27,6 @@ public class Song {
         this.listeners = listeners;
     }
 
-    public String getAlbumArt() {
-        return albumArt;
-    }
-
-    public void setAlbumArt(String albumArt) {
-        this.albumArt = albumArt;
-    }
-
-    public String getArtist() {
-        return artist;
-    }
-
-    public void setArtist(String artist) {
-        this.artist = artist;
-    }
-
-    public String getAlbum() {
-        return album;
-    }
-
-    public void setAlbum(String album) {
-        this.album = album;
-    }
-
     public String getName() {
         return name;
     }
@@ -60,4 +35,19 @@ public class Song {
         this.name = name;
     }
 
+    public Artist getArtist() {
+        return artist;
+    }
+
+    public void setArtist(Artist artist) {
+        this.artist = artist;
+    }
+
+    public Image[] getImage() {
+        return image;
+    }
+
+    public void setImage(Image[] image) {
+        this.image = image;
+    }
 }

@@ -7,7 +7,8 @@ import java.util.List;
 /**
  * Created by shanesardinha on 2016/08/08.
  */
-public interface MainView {
+public interface SongView {
 
     void updateSongList(List<Song> songList);
+
 }

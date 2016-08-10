@@ -1,0 +1,19 @@
+package com.example.shanesardinha.codeproject.Interfaces;
+
+import android.content.Context;
+
+import org.json.JSONObject;
+
+/**
+ * Created by shanesardinha on 2016/08/08.
+ */
+public interface ISongPresenter {
+
+    void fetchSongList();
+
+    void jsonRequest(String url);
+
+    void parseJson(JSONObject json) ;
+
+    Context getContext();
+}
