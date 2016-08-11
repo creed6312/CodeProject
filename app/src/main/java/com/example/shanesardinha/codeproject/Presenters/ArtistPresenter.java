@@ -27,7 +27,7 @@ public class ArtistPresenter implements IArtistPresenter, IWebRequest {
     private String artist;
 
     public ArtistPresenter(DetailSongPresenter context) {
-        if (context instanceof DetailSongPresenter)
+        if (context != null)
             this.detailSongPresenter = context;
     }
 
