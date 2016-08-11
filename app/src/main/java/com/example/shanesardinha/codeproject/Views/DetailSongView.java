@@ -8,4 +8,6 @@ import com.example.shanesardinha.codeproject.Models.SongDetail;
 public interface DetailSongView {
 
     void updateSongInfo(SongDetail songDetails);
+
+    void cancel();
 }

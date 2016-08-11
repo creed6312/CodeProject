@@ -101,7 +101,16 @@ public class SongPresenter implements ISongPresenter, IWebRequest {
             }
         };
 
+        DialogInterface.OnClickListener onNegativeClick = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+                songView.cancel();
+            }
+        };
+
         DialogHelper.createDialog(getContext(),
-                String.format("%s\n%s", getContext().getString(R.string.connection_problem), message), onPositiveClick);
+                String.format("%s\n%s", getContext().getString(R.string.connection_problem), message)
+                , onPositiveClick, onNegativeClick);
     }
 }

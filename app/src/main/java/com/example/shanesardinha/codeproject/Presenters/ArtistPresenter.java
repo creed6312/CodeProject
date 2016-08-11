@@ -50,7 +50,7 @@ public class ArtistPresenter implements IArtistPresenter, IWebRequest {
 
     public void getArtistInfo(String artist) {
         this.artist = artist;
-        ProgressUtility.createProgressDialog(getContext(), getContext().getString(R.string.fetching_detail_artist));
+        ProgressUtility.createProgressDialog(getContext(), getContext().getString(R.string.fetching_detail_song));
         ProgressUtility.showProgress();
         String url = getContext().getResources().getString(R.string.api_get_artist)
                 + getContext().getResources().getString(R.string.api_key)
@@ -90,7 +90,15 @@ public class ArtistPresenter implements IArtistPresenter, IWebRequest {
             }
         };
 
+        DialogInterface.OnClickListener onNegativeClick = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        };
+
         DialogHelper.createDialog(getContext(),
-                String.format("%s\n%s", getContext().getString(R.string.connection_problem), message), onPositiveClick);
+                String.format("%s\n%s", getContext().getString(R.string.connection_problem), message)
+                , onPositiveClick, onNegativeClick);
     }
 }

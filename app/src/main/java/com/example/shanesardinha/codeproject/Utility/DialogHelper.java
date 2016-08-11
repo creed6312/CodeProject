@@ -11,20 +11,13 @@ import com.example.shanesardinha.codeproject.R;
  */
 public class DialogHelper {
 
-    public static void createDialog(Context context, String message, DialogInterface.OnClickListener onPositiveClick)
+    public static void createDialog(Context context, String message, DialogInterface.OnClickListener onPositiveClick, DialogInterface.OnClickListener onNegativeClick)
     {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
         dialogBuilder.setMessage(message);
         dialogBuilder.setCancelable(true);
         dialogBuilder.setPositiveButton(R.string.retry,onPositiveClick);
-
-        dialogBuilder.setNegativeButton(
-                R.string.cancel,
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
+        dialogBuilder.setNegativeButton(R.string.cancel, onNegativeClick);
 
         AlertDialog alertDialog = dialogBuilder.create();
         alertDialog.show();

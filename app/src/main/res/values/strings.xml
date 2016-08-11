@@ -32,7 +32,6 @@
     <!-- Progress dialogs -->
     <string name="fetching_song_list">Fetching Song list…</string>
     <string name="fetching_detail_song">Fetching Song details…</string>
-    <string name="fetching_detail_artist">Fetching Artist details…</string>
 
     <!-- Last Fm -->
     <string name="last_fm">Last Fm:</string>

@@ -11,4 +11,5 @@ public interface SongView {
 
     void updateSongList(List<Song> songList);
 
+    void cancel();
 }

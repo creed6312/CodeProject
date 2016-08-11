@@ -78,4 +78,9 @@ public class SongActivity extends AppCompatActivity implements SongView, IBaseAc
         recyclerViewSongs.setAdapter(songListAdapter);
         songListAdapter.notifyDataSetChanged();
     }
+
+    @Override
+    public void cancel() {
+        finish();
+    }
 }

@@ -35,8 +35,7 @@ public class DetailSongPresenter implements IDetailSongPresenter, IWebRequest {
             detailSongView = (DetailSongView) context;
     }
 
-    public SongDetail getSongDetail()
-    {
+    public SongDetail getSongDetail() {
         return songDetail;
     }
 
@@ -47,11 +46,12 @@ public class DetailSongPresenter implements IDetailSongPresenter, IWebRequest {
             Gson gson = new Gson();
             songDetail = gson.fromJson(jsonTrack.toString(), SongDetail.class);
 
-            IArtistPresenter artistPresenter = new ArtistPresenter(this);
-            artistPresenter.getArtistInfo(artist);
         } catch (JSONException e) {
             e.printStackTrace();
         } finally {
+            IArtistPresenter artistPresenter = new ArtistPresenter(this);
+            artistPresenter.getArtistInfo(artist);
+
             ProgressUtility.progressDone();
         }
     }
@@ -60,7 +60,7 @@ public class DetailSongPresenter implements IDetailSongPresenter, IWebRequest {
     public void fetchSongDetails(String artist, String name) {
         this.artist = artist;
         this.name = name;
-        ProgressUtility.createProgressDialog(getContext(), getContext().getString(R.string.fetching_detail_artist));
+        ProgressUtility.createProgressDialog(getContext(), getContext().getString(R.string.fetching_detail_song));
         ProgressUtility.showProgress();
         String url = getContext().getResources().getString(R.string.api_get_track)
                 + getContext().getResources().getString(R.string.api_key)
@@ -108,7 +108,16 @@ public class DetailSongPresenter implements IDetailSongPresenter, IWebRequest {
             }
         };
 
+        DialogInterface.OnClickListener onNegativeClick = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+                detailSongView.cancel();
+            }
+        };
+
         DialogHelper.createDialog(getContext(),
-                String.format("%s\n%s", getContext().getString(R.string.connection_problem), message), onPositiveClick);
+                String.format("%s\n%s", getContext().getString(R.string.connection_problem), message)
+                , onPositiveClick, onNegativeClick);
     }
 }

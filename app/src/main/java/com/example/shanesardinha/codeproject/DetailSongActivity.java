@@ -128,4 +128,9 @@ public class DetailSongActivity extends AppCompatActivity implements DetailSongV
                 .getImage()[Constants.HIGH_RES_IMAGE].getText()).centerCrop()
                 .placeholder(R.drawable.no_art).crossFade().into(ivDetailImage);
     }
+
+    @Override
+    public void cancel() {
+        finish();
+    }
 }
