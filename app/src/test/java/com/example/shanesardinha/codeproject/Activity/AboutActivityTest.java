@@ -2,13 +2,11 @@ package com.example.shanesardinha.codeproject.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
 
+import com.example.shanesardinha.codeproject.AboutActivity;
 import com.example.shanesardinha.codeproject.BuildConfig;
-import com.example.shanesardinha.codeproject.Interfaces.ISongPresenter;
-import com.example.shanesardinha.codeproject.Presenters.SongPresenter;
 import com.example.shanesardinha.codeproject.R;
-import com.example.shanesardinha.codeproject.SongActivity;
 import com.example.shanesardinha.codeproject.TestHelpers.CustomRobolectricRunner;
 
 import org.junit.Before;
@@ -20,7 +18,6 @@ import org.robolectric.Robolectric;
 import org.robolectric.annotation.Config;
 import org.robolectric.util.ReflectionHelpers;
 
-import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -31,9 +28,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(CustomRobolectricRunner.class)
 @Config(constants = BuildConfig.class, sdk = 21)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class SongActivityTest  {
+public class AboutActivityTest {
 
-    private SongActivity mSongActivity;
+    private AboutActivity mAboutActivity;
+
+    private static TextView tvAbout ;
+    private static TextView tvAboutLastFm ;
 
     @Before
     public void setUp() throws Exception {
@@ -43,7 +43,7 @@ public class SongActivityTest  {
         Intent intent = new Intent();
         // Build the Activity
         Bundle savedInstanceState = new Bundle();
-        mSongActivity = Robolectric.buildActivity(SongActivity.class)
+        mAboutActivity = Robolectric.buildActivity(AboutActivity.class)
                 .withIntent(intent)
                 .create(savedInstanceState)
                 .start()
@@ -56,23 +56,19 @@ public class SongActivityTest  {
 
     @Test
     public void test_ActivityStarted() {
-        // Ensure the Activity has been created
-        assertNotNull("mSongActivity is null", mSongActivity);
-        assertThat(mSongActivity.getClass().getSimpleName()).isEqualTo(SongActivity.class.getSimpleName());
+        assertNotNull("mAboutActivity is null", mAboutActivity);
+        assertThat(mAboutActivity.getClass().getSimpleName()).isEqualTo(AboutActivity.class.getSimpleName());
     }
 
     @Test
-    public void test_PresenterTag()
-    {
-        ISongPresenter songPresenter =  new SongPresenter(mSongActivity);
-        assertEquals("SongPresenter", songPresenter.getRequestPresenter());
+    public void test_a_InitialiseControls() {
+        tvAbout = (TextView) mAboutActivity.findViewById(R.id.tv_about);
+        tvAboutLastFm = (TextView) mAboutActivity.findViewById(R.id.tv_about_last_fm);
     }
 
     @Test
-    public void test_RecyclerViewNotNull()
-    {
-        RecyclerView recyclerViewSongs = (RecyclerView) mSongActivity.findViewById(R.id.recyclerview_simple_song_list);
-        assertNotNull("mSongActivity is null", recyclerViewSongs);
+    public void test_b_CheckControls() {
+        assertNotNull("tvDetailName is null", tvAbout);
+        assertNotNull("tvDetailArtist is null", tvAboutLastFm);
     }
 }
-

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/about_padding"
+    android:orientation="vertical">
+    <android.support.v7.widget.CardView
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="#FFFFF1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_about"
+                android:textSize="@dimen/about_text_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:padding="@dimen/about_padding" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/about_text_size"
+                android:paddingStart="@dimen/about_padding"
+                android:paddingEnd="@dimen/about_padding"
+                android:text="@string/last_fm_api"
+                android:autoLink="web"/>
+
+            <TextView
+                android:text="@string/last_fm"
+                android:textStyle="bold"
+                android:textSize="@dimen/about_text_size"
+                android:textColor="@android:color/black"
+                android:padding="@dimen/about_padding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_about_last_fm"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/about_text_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/about_padding"
+                android:paddingRight="@dimen/about_padding"
+                android:paddingBottom="@dimen/about_padding"/>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</RelativeLayout>

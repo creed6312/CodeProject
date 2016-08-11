@@ -1,6 +1,5 @@
 package com.example.shanesardinha.codeproject.Utility;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -15,7 +14,6 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
-import org.mockito.Mock;
 import org.robolectric.Robolectric;
 import org.robolectric.annotation.Config;
 import org.robolectric.util.ReflectionHelpers;
@@ -31,8 +29,6 @@ import static org.junit.Assert.assertEquals;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class UtilityTest {
 
-    @Mock
-    Context mMockContext;
     private SongActivity mSongActivity;
 
     @Before
@@ -57,6 +53,8 @@ public class UtilityTest {
     @Test
     public void test_GetDateTimeUtility() throws Exception {
         assertEquals("01:52", DateTimeUtility.getMinuteAndSeconds(112000));
+        assertEquals("00:02", DateTimeUtility.getMinuteAndSeconds(2000));
+        assertEquals("00:20", DateTimeUtility.getMinuteAndSeconds(20000));
     }
 
     @Test
@@ -67,7 +65,7 @@ public class UtilityTest {
     }
 
     @Test
-    public void testHtml()
+    public void test_GetHtml()
     {
         Assert.assertEquals("Test", Utility.getHtml("<a>Test</a>"));
         Assert.assertEquals("Test\n\n", Utility.getHtml("<p>Test</p>"));

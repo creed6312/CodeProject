@@ -18,4 +18,9 @@
     <string name="connection_problem">Something went wrong..\n</string>
     <string name="retry">Retry</string>
     <string name="cancel">Cancel</string>
+    <string name="menu_about">About</string>
+    <string name="about_last_fm">Here at Last.fm we believe there’s an infinite universe of music out there and we want to help the world navigate, explore and enjoy even more of it.\n\nWe bring together your favourite music services and join up listening, watching and sharing to connect your musical world.</string>
+    <string name="about">This is a code project made by Shane Sardinha.\n\nIt uses last.fm\'s free api to fetch Top Song information.</string>
+    <string name="last_fm">Last Fm:</string>
+    <string name="last_fm_api">http://www.last.fm/api</string>
 </resources>

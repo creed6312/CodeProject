@@ -26,7 +26,7 @@ public class SongListAdapter extends RecyclerView.Adapter<SongListAdapter.ViewHo
     private List<Song> songs ;
     private Activity songActivity ;
 
-    public SongListAdapter(Activity songActivity,List<Song> songs) {
+    public SongListAdapter(Activity songActivity, List<Song> songs) {
         this.songs = songs ;
         this.songActivity = songActivity;
     }

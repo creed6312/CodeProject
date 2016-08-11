@@ -1,7 +1,10 @@
 package com.example.shanesardinha.codeproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -45,10 +48,22 @@ public class DetailSongActivity extends AppCompatActivity implements DetailSongV
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        // return true so that the menu pop up is opened
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
+                return true;
+            case R.id.menu_About:
+                Intent intent = new Intent(this,AboutActivity.class);
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -104,7 +119,6 @@ public class DetailSongActivity extends AppCompatActivity implements DetailSongV
             tvTagUrl.setText(String.format("Url: %s", songDetails.getToptag().getTag()[i].getUrl()));
             llTopTag.addView(tvTagUrl);
         }
-
 
         tvDetailArtist.setText(String.format("Artist: %s", songDetails.getArtist().getName()));
         tvOnTour.setText(String.format("On Tour: %s", songDetails.getArtist().isOnTour()));

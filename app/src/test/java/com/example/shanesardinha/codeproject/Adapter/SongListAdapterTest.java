@@ -1,13 +1,11 @@
-package com.example.shanesardinha.codeproject.Activity;
+package com.example.shanesardinha.codeproject.Adapter;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 
+import com.example.shanesardinha.codeproject.Adapters.SongListAdapter;
 import com.example.shanesardinha.codeproject.BuildConfig;
-import com.example.shanesardinha.codeproject.Interfaces.ISongPresenter;
-import com.example.shanesardinha.codeproject.Presenters.SongPresenter;
-import com.example.shanesardinha.codeproject.R;
+import com.example.shanesardinha.codeproject.Models.Song;
 import com.example.shanesardinha.codeproject.SongActivity;
 import com.example.shanesardinha.codeproject.TestHelpers.CustomRobolectricRunner;
 
@@ -20,18 +18,19 @@ import org.robolectric.Robolectric;
 import org.robolectric.annotation.Config;
 import org.robolectric.util.ReflectionHelpers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
-import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Created by shanesardinha on 2016/08/11.
  */
-
 @RunWith(CustomRobolectricRunner.class)
 @Config(constants = BuildConfig.class, sdk = 21)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class SongActivityTest  {
+public class SongListAdapterTest {
 
     private SongActivity mSongActivity;
 
@@ -55,24 +54,22 @@ public class SongActivityTest  {
     }
 
     @Test
-    public void test_ActivityStarted() {
-        // Ensure the Activity has been created
-        assertNotNull("mSongActivity is null", mSongActivity);
-        assertThat(mSongActivity.getClass().getSimpleName()).isEqualTo(SongActivity.class.getSimpleName());
+    public void test_AdapterCreation()
+    {
+        List<Song> songList = new ArrayList<>();
+        SongListAdapter songListAdapter = new SongListAdapter(mSongActivity,songList);
+        assertNotNull("songListAdapter is null", songListAdapter);
     }
 
     @Test
-    public void test_PresenterTag()
+    public void test_AdapterItemCount()
     {
-        ISongPresenter songPresenter =  new SongPresenter(mSongActivity);
-        assertEquals("SongPresenter", songPresenter.getRequestPresenter());
-    }
-
-    @Test
-    public void test_RecyclerViewNotNull()
-    {
-        RecyclerView recyclerViewSongs = (RecyclerView) mSongActivity.findViewById(R.id.recyclerview_simple_song_list);
-        assertNotNull("mSongActivity is null", recyclerViewSongs);
+        List<Song> songList = new ArrayList<>();
+        Song song = new Song();
+        songList.add(song);
+        songList.add(song);
+        songList.add(song);
+        SongListAdapter songListAdapter = new SongListAdapter(mSongActivity,songList);
+        assertEquals(3, songListAdapter.getItemCount());
     }
 }
-
