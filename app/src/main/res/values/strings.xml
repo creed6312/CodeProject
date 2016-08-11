@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Top 50 Songs</string>
+
+    <!-- API Calls -->
     <string name="api_get_top_tracks">http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks</string>
     <string name="api_get_track">http://ws.audioscrobbler.com/2.0/?method=track.getInfo</string>
     <string name="api_get_artist">http://ws.audioscrobbler.com/2.0/?method=artist.getinfo</string>
@@ -7,20 +9,32 @@
     <string name="api_format">&amp;format=json</string>
     <string name="api_artist">&amp;artist=</string>
     <string name="api_track">&amp;track=</string>
-    <string name="fetching_song_list">Fetching Song list...</string>
-    <string name="fetching_detail_song">Fetching Song details...</string>
-    <string name="fetching_detail_artist">Fetching Artist details...</string>
+
+    <!-- Detail Song Activity -->
     <string name="song_details">Song Details:</string>
+    <string name="song_details_title">Song Details</string>
     <string name="song_wiki">Wiki:</string>
     <string name="song_similar">Similar:</string>
     <string name="no_wiki_details">No Wiki Details.</string>
+
+    <!-- About Activity -->
+    <string name="menu_about">About</string>
+    <string name="about_last_fm">Here at Last.fm we believe there’s an infinite universe of music out there and we want to help the world navigate, explore and enjoy even more of it.\n\nWe bring together your favourite music services and join up listening, watching and sharing to connect your musical world.</string>
+    <string name="about">This is a code project made by Shane Sardinha.\n\nIt uses last.fm\'s free api to fetch Top Song information.</string>
+    <string name="about_title">About</string>
+
+    <!-- Popup Dialog -->
     <string name="failed_to_connect">failed to connect</string>
     <string name="connection_problem">Something went wrong..\n</string>
     <string name="retry">Retry</string>
     <string name="cancel">Cancel</string>
-    <string name="menu_about">About</string>
-    <string name="about_last_fm">Here at Last.fm we believe there’s an infinite universe of music out there and we want to help the world navigate, explore and enjoy even more of it.\n\nWe bring together your favourite music services and join up listening, watching and sharing to connect your musical world.</string>
-    <string name="about">This is a code project made by Shane Sardinha.\n\nIt uses last.fm\'s free api to fetch Top Song information.</string>
+
+    <!-- Progress dialogs -->
+    <string name="fetching_song_list">Fetching Song list…</string>
+    <string name="fetching_detail_song">Fetching Song details…</string>
+    <string name="fetching_detail_artist">Fetching Artist details…</string>
+
+    <!-- Last Fm -->
     <string name="last_fm">Last Fm:</string>
     <string name="last_fm_api">http://www.last.fm/api</string>
 </resources>

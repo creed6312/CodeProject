@@ -43,6 +43,7 @@ public class DetailSongActivity extends AppCompatActivity implements DetailSongV
         if (getSupportActionBar() != null)
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        setTitle(getResources().getString(R.string.song_details_title));
         setUpViews();
         createPresenter();
     }

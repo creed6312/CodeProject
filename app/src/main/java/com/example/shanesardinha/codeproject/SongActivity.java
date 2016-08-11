@@ -29,6 +29,7 @@ public class SongActivity extends AppCompatActivity implements SongView, IBaseAc
         if (getSupportActionBar() != null)
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        setTitle(getResources().getString(R.string.app_name));
         setUpViews();
         createPresenter();
     }
