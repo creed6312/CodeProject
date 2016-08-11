@@ -14,4 +14,8 @@
     <string name="song_wiki">Wiki:</string>
     <string name="song_similar">Similar:</string>
     <string name="no_wiki_details">No Wiki Details.</string>
+    <string name="failed_to_connect">failed to connect</string>
+    <string name="connection_problem">Something went wrong..\n</string>
+    <string name="retry">Retry</string>
+    <string name="cancel">Cancel</string>
 </resources>

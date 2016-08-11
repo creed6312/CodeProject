@@ -9,11 +9,11 @@ import org.json.JSONObject;
  */
 public interface ISongPresenter {
 
-    void fetchSongList();
-
-    void jsonRequest(String url);
-
     void parseJson(JSONObject json) ;
 
+    void fetchSongList();
+
     Context getContext();
+
+    String getRequestPresenter() ;
 }

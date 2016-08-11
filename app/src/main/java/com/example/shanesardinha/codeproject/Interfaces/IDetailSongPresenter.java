@@ -2,6 +2,9 @@ package com.example.shanesardinha.codeproject.Interfaces;
 
 import android.content.Context;
 
+import com.example.shanesardinha.codeproject.Models.Artist;
+import com.example.shanesardinha.codeproject.Models.SongDetail;
+
 import org.json.JSONObject;
 
 /**
@@ -9,12 +12,15 @@ import org.json.JSONObject;
  */
 public interface IDetailSongPresenter {
 
+    void parseJson(JSONObject json);
+
     void fetchSongDetails(String artist,String name);
 
-    void parseSongDetailJson(JSONObject json);
+    void updateArtistInfo(Artist artist);
 
-    void jsonRequest(String url);
+    SongDetail getSongDetail();
 
     Context getContext();
 
+    String getRequestPresenter() ;
 }

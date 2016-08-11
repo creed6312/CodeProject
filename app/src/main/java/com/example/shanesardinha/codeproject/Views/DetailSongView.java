@@ -1,6 +1,5 @@
 package com.example.shanesardinha.codeproject.Views;
 
-import com.example.shanesardinha.codeproject.Models.Artist;
 import com.example.shanesardinha.codeproject.Models.SongDetail;
 
 /**
@@ -9,7 +8,4 @@ import com.example.shanesardinha.codeproject.Models.SongDetail;
 public interface DetailSongView {
 
     void updateSongInfo(SongDetail songDetails);
-
-    void updateArtistInfo(Artist artist);
-
 }

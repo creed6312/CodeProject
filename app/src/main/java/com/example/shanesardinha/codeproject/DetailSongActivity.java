@@ -9,12 +9,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.shanesardinha.codeproject.Constants.Constants;
-import com.example.shanesardinha.codeproject.Interfaces.IArtistPresenter;
 import com.example.shanesardinha.codeproject.Interfaces.IBaseActivity;
 import com.example.shanesardinha.codeproject.Interfaces.IDetailSongPresenter;
-import com.example.shanesardinha.codeproject.Models.Artist;
 import com.example.shanesardinha.codeproject.Models.SongDetail;
-import com.example.shanesardinha.codeproject.Presenters.ArtistPresenter;
 import com.example.shanesardinha.codeproject.Presenters.DetailSongPresenter;
 import com.example.shanesardinha.codeproject.Utility.DateTimeUtility;
 import com.example.shanesardinha.codeproject.Utility.Utility;
@@ -80,9 +77,6 @@ public class DetailSongActivity extends AppCompatActivity implements DetailSongV
 
         IDetailSongPresenter detailSongPresenter = new DetailSongPresenter(this);
         detailSongPresenter.fetchSongDetails(artist, name);
-
-        IArtistPresenter artistPresenter = new ArtistPresenter(this);
-        artistPresenter.getArtistInfo(artist);
     }
 
     @Override
@@ -110,15 +104,13 @@ public class DetailSongActivity extends AppCompatActivity implements DetailSongV
             tvTagUrl.setText(String.format("Url: %s", songDetails.getToptag().getTag()[i].getUrl()));
             llTopTag.addView(tvTagUrl);
         }
-    }
 
-    @Override
-    public void updateArtistInfo(Artist artist) {
-        tvDetailArtist.setText(String.format("Artist: %s", artist.getName()));
-        tvOnTour.setText(String.format("On Tour: %s", artist.isOnTour()));
 
-        Glide.with(ivDetailImage.getContext()).load(artist.getImage()[Constants.HIGH_RES_IMAGE].getText()).centerCrop()
+        tvDetailArtist.setText(String.format("Artist: %s", songDetails.getArtist().getName()));
+        tvOnTour.setText(String.format("On Tour: %s", songDetails.getArtist().isOnTour()));
+
+        Glide.with(ivDetailImage.getContext()).load(songDetails.getArtist()
+                .getImage()[Constants.HIGH_RES_IMAGE].getText()).centerCrop()
                 .placeholder(R.drawable.no_art).crossFade().into(ivDetailImage);
-
     }
 }

@@ -1,20 +1,16 @@
 package com.example.shanesardinha.codeproject.Presenters;
 
-import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.shanesardinha.codeproject.Constants.Constants;
 import com.example.shanesardinha.codeproject.Interfaces.IArtistPresenter;
+import com.example.shanesardinha.codeproject.Interfaces.IWebRequest;
 import com.example.shanesardinha.codeproject.Models.Artist;
 import com.example.shanesardinha.codeproject.R;
+import com.example.shanesardinha.codeproject.Utility.DialogHelper;
+import com.example.shanesardinha.codeproject.Utility.JsonHelper;
 import com.example.shanesardinha.codeproject.Utility.ProgressUtility;
-import com.example.shanesardinha.codeproject.Views.DetailSongView;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -24,55 +20,37 @@ import org.json.JSONObject;
 /**
  * Created by shanesardinha on 2016/08/10.
  */
-public class ArtistPresenter implements IArtistPresenter {
+public class ArtistPresenter implements IArtistPresenter, IWebRequest {
 
-    private DetailSongView detailSongView ;
-    private ProgressDialog progressDialog;
+    private static final String TAG = ArtistPresenter.class.getSimpleName();
+    private DetailSongPresenter detailSongPresenter;
+    private String artist;
 
-    public ArtistPresenter(Context context) {
-        this.detailSongView = (DetailSongView) context;
-        ProgressUtility.createProgressDialog(context,context.getString(R.string.fetching_detail_artist));
+    public ArtistPresenter(DetailSongPresenter context) {
+        if (context instanceof DetailSongPresenter)
+            this.detailSongPresenter = context;
     }
 
-    public void parseArtistJson(JSONObject json)
-    {
+    @Override
+    public void parseJson(JSONObject json) {
         try {
             JSONObject jsonArtist = json.getJSONObject("artist");
             Gson gson = new Gson();
             Artist artist = gson.fromJson(jsonArtist.toString(), Artist.class);
             JSONArray imageArray = jsonArtist.getJSONArray("image");
-            for (int j = 0 ; j < imageArray.length() ; j++)
+            for (int j = 0; j < imageArray.length(); j++)
                 artist.getImage()[j].setText(imageArray.getJSONObject(j).getString("#text"));
-            detailSongView.updateArtistInfo(artist);
+            detailSongPresenter.updateArtistInfo(artist);
         } catch (JSONException e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             ProgressUtility.progressDone();
         }
     }
 
-    @Override
-    public void jsonRequest(String url) {
-        RequestQueue queue = Volley.newRequestQueue(getContext());
-        JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        parseArtistJson(response);
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        System.err.println(error.getMessage());
-                        ProgressUtility.progressDone();
-                    }
-                });
-        queue.add(jsObjRequest);
-    }
-
-    public void getArtistInfo(String artist)
-    {
+    public void getArtistInfo(String artist) {
+        this.artist = artist;
+        ProgressUtility.createProgressDialog(getContext(), getContext().getString(R.string.fetching_detail_artist));
         ProgressUtility.showProgress();
         String url = getContext().getResources().getString(R.string.api_get_artist)
                 + getContext().getResources().getString(R.string.api_key)
@@ -80,12 +58,39 @@ public class ArtistPresenter implements IArtistPresenter {
                 + getContext().getResources().getString(R.string.api_artist)
                 + artist
                 + getContext().getResources().getString(R.string.api_format);
-        url = url.replace(" ","%20");
-        jsonRequest(url);
+        url = url.replace(" ", "%20");
+        new JsonHelper().jsonRequest(this, getContext(), url);
     }
 
     @Override
     public Context getContext() {
-        return (Context) detailSongView;
+        return detailSongPresenter.getContext();
+    }
+
+    @Override
+    public String getRequestPresenter() {
+        return TAG;
+    }
+
+    @Override
+    public void onResponseCompleted(JSONObject response) {
+        parseJson(response);
+    }
+
+    @Override
+    public void onResponseError(String message) {
+        System.err.println(message);
+        ProgressUtility.progressDone();
+
+        DialogInterface.OnClickListener onPositiveClick = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+                getArtistInfo(artist);
+            }
+        };
+
+        DialogHelper.createDialog(getContext(),
+                String.format("%s\n%s", getContext().getString(R.string.connection_problem), message), onPositiveClick);
     }
 }
