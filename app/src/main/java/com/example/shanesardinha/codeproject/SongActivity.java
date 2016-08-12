@@ -48,7 +48,7 @@ public class SongActivity extends AppCompatActivity implements SongView, IBaseAc
             case android.R.id.home:
                 finish();
                 return true;
-            case R.id.menu_About:
+            case R.id.menu_about:
                 Intent intent = new Intent(this,AboutActivity.class);
                 startActivity(intent);
                 return true;

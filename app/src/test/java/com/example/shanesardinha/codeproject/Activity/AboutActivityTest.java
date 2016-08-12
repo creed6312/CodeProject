@@ -9,9 +9,9 @@ import com.example.shanesardinha.codeproject.BuildConfig;
 import com.example.shanesardinha.codeproject.R;
 import com.example.shanesardinha.codeproject.TestHelpers.CustomRobolectricRunner;
 
+import org.junit.Test;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.robolectric.Robolectric;
